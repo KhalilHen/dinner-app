@@ -20,4 +20,18 @@ class AuthService {
       print(e);
     }
   }
+
+  Future<String?> getLoggedInUser() async {
+    final session = supabase.auth.currentSession;
+    final User = session?.user.id;
+
+    if (User == null) {
+      print('No authenticated user found.');
+      return null;
+    }
+
+    // print('Authenticated User ID: $User');
+
+    return User;
+  }
 }
