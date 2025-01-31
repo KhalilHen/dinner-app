@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/auth/auth_service.dart';
 import 'package:flutter_application_1/pages/list_overview.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  final _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +48,9 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    _authService.login(_emailController.text, _passwordController.text);
+                  }
                 },
                 child: const Text('Login'),
               ),

@@ -30,7 +30,7 @@ class AuthService {
       return null;
     }
 
-    // print('Authenticated User ID: $User');
+    print("User value $User");
 
     return User;
   }

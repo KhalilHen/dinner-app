@@ -13,7 +13,7 @@ class ListController {
 
     final response = await supabase.from('list').insert([
       {
-        'listName': listName,
+        'title': listName,
         'user_id': userResponse,
       }
     ]);
@@ -21,11 +21,15 @@ class ListController {
 
   Future<List<Lists>> fetchUserList() async {
     final userResponse = await authService.getLoggedInUser();
+
+    print(userResponse);
     if (userResponse == null) {
+      print("User not logged ");
       return [];
     }
 
     final response = await supabase.from('list').select().eq('user_id', userResponse);
+    print("Raw response of list output $response");
     if (response == null) {
       return [];
     }

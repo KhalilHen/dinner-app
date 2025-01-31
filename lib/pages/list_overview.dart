@@ -61,6 +61,8 @@ class _ListOverviewState extends State<ListOverview> {
                     itemCount: lists.length,
                     itemBuilder: (context, index) {
                       final list = lists[index];
+
+                      //*Hero/gesture for later when viewing the item
                       return GestureDetector(
                         child: Hero(
                           tag: "list_${list.id}",

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Reused old code
 class Lists {
   final int id;
   final String title;
