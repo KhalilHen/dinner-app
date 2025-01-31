@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/list_controller.dart';
 import 'package:flutter_application_1/models/list_model.dart';
+import 'package:flutter_application_1/pages/list_items.dart';
 
 class ListOverview extends StatefulWidget {
   const ListOverview({Key? key}) : super(key: key);
@@ -62,8 +63,18 @@ class _ListOverviewState extends State<ListOverview> {
                     itemBuilder: (context, index) {
                       final list = lists[index];
 
-                      //*Hero/gesture for later when viewing the item
                       return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ListItems(
+                                title: list.title,
+                                userId: list.userId,
+                              ),
+                            ),
+                          );
+                        },
                         child: Hero(
                           tag: "list_${list.id}",
                           child: Card(
