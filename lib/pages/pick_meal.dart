@@ -45,6 +45,13 @@ class _PickMealPageState extends State<PickMealPage> {
             SizedBox(
               height: 20,
             ),
+            Text(
+              _meal != null ? _meal!.strMeal : 'Loading...',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 15,
+            ),
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
