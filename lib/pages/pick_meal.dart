@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/fetch_meal.dart';
 import 'package:flutter_application_1/models/meal_model.dart';
+import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 class PickMealPage extends StatefulWidget {
   const PickMealPage({super.key});
@@ -10,7 +11,12 @@ class PickMealPage extends StatefulWidget {
 }
 
 class _PickMealPageState extends State<PickMealPage> {
+  final controller = FlipCardController();
   Meal? _meal;
+
+  void _flipCard() {
+    _fetchMeal();
+  }
 
   void _fetchMeal() async {
     final fetchMealController = FetchMealController();
@@ -18,6 +24,7 @@ class _PickMealPageState extends State<PickMealPage> {
     setState(() {
       _meal = meal;
     });
+    controller.flipcard();
   }
 
   @override
@@ -52,21 +59,35 @@ class _PickMealPageState extends State<PickMealPage> {
             SizedBox(
               height: 15,
             ),
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: _meal != null ? NetworkImage(_meal!.strMealThumb) : AssetImage('assets/placeholder.png') as ImageProvider,
-                  fit: BoxFit.cover,
+            FlipCard(
+              controller: controller,
+              rotateSide: RotateSide.right,
+              frontWidget: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: _meal != null ? NetworkImage(_meal!.strMealThumb) : AssetImage('assets/placeholder.png') as ImageProvider,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+                height: 200,
+                width: 300,
               ),
-              height: 200,
-              width: 300,
+              backWidget: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: _meal != null ? NetworkImage(_meal!.strMealThumb) : AssetImage('assets/placeholder.png') as ImageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                height: 200,
+                width: 300,
+              ),
             ),
             SizedBox(
               height: 50,
             ),
             ElevatedButton(
-              onPressed: _fetchMeal,
+              onPressed: _flipCard,
               child: Text(' Next'),
             ),
           ],
