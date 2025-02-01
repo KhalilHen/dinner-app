@@ -1,16 +1,33 @@
-# flutter_application_1
+# DinnerApp 🍽️
 
-A new Flutter project.
+A Flutter application that helps users discover new meal ideas with random recipe suggestions. Features user authentication and integration with a meal API.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+### 🛡️ User Authentication
+- Sign up with email and password
+- Login with existing credentials
+- Secure password storage
 
-A few resources to get you started if this is your first Flutter project:
+### 🍲 Meal Discovery
+- Fetch random meal suggestions
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Getting Started
+
+### Prerequisites
+Ensure you have the following installed:
+- **Flutter SDK** (2.0 or higher)
+- **Dart SDK** (2.12 or higher)
+- **Android Studio / VS Code** with Flutter extensions
+- A suitable IDE (**Android Studio** or **VS Code** recommended)
+
+---
+
+## 🛠 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/dinner-app.git
