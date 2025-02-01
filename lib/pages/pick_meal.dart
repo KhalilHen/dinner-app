@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/fetch_meal.dart';
 import 'package:flutter_application_1/models/meal_model.dart';
+import 'package:flutter_application_1/pages/dashboard.dart';
+import 'package:flutter_application_1/pages/list_overview.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 class PickMealPage extends StatefulWidget {
@@ -36,8 +38,14 @@ class _PickMealPageState extends State<PickMealPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        title: Text('Pick Meal'),
+        backgroundColor: Color(0xFF2E7D32),
+        elevation: 2,
+        title: Text(
+          'Pick Meal',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
@@ -47,7 +55,11 @@ class _PickMealPageState extends State<PickMealPage> {
             ),
             Text(
               'Pick Meal',
-              style: TextStyle(fontSize: 26),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2E7D32),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -92,6 +104,38 @@ class _PickMealPageState extends State<PickMealPage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardPage()));
+              },
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.restaurant),
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => PickMealPage()));
+              },
+            ),
+            label: 'Choose-meal',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOverview()));
+              },
+            ),
+            label: 'List',
+          ),
+        ],
       ),
     );
   }

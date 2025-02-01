@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/list_controller.dart';
 import 'package:flutter_application_1/models/list_model.dart';
+import 'package:flutter_application_1/pages/dashboard.dart';
 import 'package:flutter_application_1/pages/list_items.dart';
+import 'package:flutter_application_1/pages/pick_meal.dart';
 
 class ListOverview extends StatefulWidget {
   const ListOverview({Key? key}) : super(key: key);
@@ -23,8 +25,14 @@ class _ListOverviewState extends State<ListOverview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        title: const Text('List Overview'),
+        backgroundColor: Color(0xFF2E7D32),
+        elevation: 2,
+        title: Text(
+          'List overview',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
@@ -34,7 +42,11 @@ class _ListOverviewState extends State<ListOverview> {
             ),
             Text(
               'List Overview',
-              style: TextStyle(fontSize: 26),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2E7D32),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -120,6 +132,38 @@ class _ListOverviewState extends State<ListOverview> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardPage()));
+              },
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.restaurant),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PickMealPage()));
+              },
+            ),
+            label: 'Choose-meal',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => ListOverview()));
+              },
+            ),
+            label: 'List',
+          ),
+        ],
       ),
     );
   }

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/list_overview.dart';
+import 'package:flutter_application_1/pages/pick_meal.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        title: Text('Dinner App'),
-        backgroundColor: Colors.orange,
+        title: Text(
+          'Dinner App',
+          style: TextStyle(color: Colors.white),
+        ),
+        // backgroundColor: Colors.orange,
+        backgroundColor: Color(0xFF2E7D32),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -20,7 +27,7 @@ class DashboardPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.orange,
+                  color: Color(0xFF2E7D32),
                 ),
               ),
               SizedBox(height: 16),
@@ -45,14 +52,15 @@ class DashboardPage extends StatelessWidget {
               Text(
                 "Meal title",
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
+                  color: Color(0xFF2E7D32),
                 ),
               ),
               SizedBox(height: 8),
               Text(
                 "Meal description",
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.grey[800]),
               ),
               SizedBox(height: 20),
             ],
@@ -60,18 +68,33 @@ class DashboardPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Color(0xFF2E7D32),
+        unselectedItemColor: Colors.grey[600],
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {},
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant),
+            icon: IconButton(
+              icon: Icon(Icons.restaurant),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PickMealPage()));
+              },
+            ),
             label: 'Choose-meal',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOverview()));
+              },
+            ),
             label: 'List',
           ),
         ],
