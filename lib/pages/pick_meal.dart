@@ -14,6 +14,8 @@ class PickMealPage extends StatefulWidget {
 
 class _PickMealPageState extends State<PickMealPage> {
   final controller = FlipCardController();
+      final currentIndex = 1;
+
   Meal? _meal;
 
   void _flipCard() {
@@ -106,6 +108,9 @@ class _PickMealPageState extends State<PickMealPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+    selectedItemColor: Color(0xFF2E7D32),
+        currentIndex: currentIndex,
+        unselectedItemColor: Colors.grey[600],
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(

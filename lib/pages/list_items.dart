@@ -18,8 +18,14 @@ class ListItems extends StatelessWidget {
     // );
 
     return Scaffold(
+      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        title: Text(title),
+        backgroundColor: Color(0xFF2E7D32),
+        elevation: 2,
+        title: Text(
+          'List Items',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
@@ -29,7 +35,14 @@ class ListItems extends StatelessWidget {
             ),
             Text(
               "List items",
-              style: TextStyle(fontSize: 26),
+              style: TextStyle(
+                fontSize: 24,
+
+                fontWeight: FontWeight.bold,
+
+                //
+                color: Color(0xFF2E7D32),
+              ),
             ),
             SizedBox(
               height: 20,
@@ -51,9 +64,15 @@ class ListItems extends StatelessWidget {
                       ),
                       title: Text(
                         "Item $index",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Color(0xFF2E7D32), fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      subtitle: Text("Description $index"),
+                      subtitle: Text(
+                        "Description $index",
+                        style: TextStyle(
+                          color: Color(0xFF2E7D32),
+                          fontSize: 12,
+                        ),
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {
 // This can  use to navigate to specific dinner item. With in top a big image. then under custom description/title

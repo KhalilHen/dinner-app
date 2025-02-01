@@ -11,6 +11,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   Meal? _meal;
+  final currentIndex = 0;
 
   void _fetchMeal() async {
     final fetchMealController = FetchMealController();
@@ -93,6 +94,7 @@ class _DashboardPageState extends State<DashboardPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Color(0xFF2E7D32),
+        currentIndex: currentIndex,
         unselectedItemColor: Colors.grey[600],
         type: BottomNavigationBarType.fixed,
         items: [

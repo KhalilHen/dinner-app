@@ -24,6 +24,7 @@ class _ListOverviewState extends State<ListOverview> {
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = 2;
     return Scaffold(
       backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
@@ -137,6 +138,9 @@ class _ListOverviewState extends State<ListOverview> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Color(0xFF2E7D32),
+        currentIndex: currentIndex,
+        unselectedItemColor: Colors.grey[600],
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
