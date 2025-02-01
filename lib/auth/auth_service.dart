@@ -34,4 +34,39 @@ class AuthService {
 
     return User;
   }
+
+  Future<AuthResponse?> signUpWithEmaiPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      print("Signing up with email: $email, password: $password, ");
+
+      final response = await supabase.auth.signUp(
+        email: email,
+        password: password,
+      );
+
+      if (response.user != null) {
+        final userId = response.user!.id;
+
+        // Use .insert() method and handle potential errors
+        final insertResponse = await supabase.from('person').insert({
+          'id': userId,
+          'email': email,
+        });
+
+        print("User created successfully");
+        return response;
+      }
+
+      return null;
+    } on PostgrestException catch (e) {
+      print("Postgres Error during sign up: ${e.message}");
+      return null;
+    } catch (e) {
+      print("Error during sign up: $e");
+      return null;
+    }
+  }
 }

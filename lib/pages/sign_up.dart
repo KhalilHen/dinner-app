@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/auth/auth_service.dart';
 import 'package:flutter_application_1/pages/dashboard.dart';
 import 'package:flutter_application_1/pages/list_overview.dart';
-import 'package:flutter_application_1/pages/sign_up.dart';
+import 'package:flutter_application_1/pages/login.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Color(0xFF2E7D32),
         elevation: 2,
         title: Text(
-          'Login',
+          'Sign Up',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Login",
+                "Sign Up",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32)),
               ),
               SizedBox(
@@ -64,11 +64,11 @@ class LoginPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    _authService.login(_emailController.text, _passwordController.text);
+                    _authService.signUpWithEmaiPassword(_emailController.text, _passwordController.text);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DashboardPage(),
+                        builder: (context) => LoginPage(),
                       ),
                     );
                   }
@@ -76,22 +76,22 @@ class LoginPage extends StatelessWidget {
                 child: const Text('Login'),
               ),
               SizedBox(
-                height: 15,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?"),
+                  Text("Already have an account? "),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUpPage(),
+                          builder: (context) => LoginPage(),
                         ),
                       );
                     },
-                    child: Text('Sign up'),
+                    child: Text('Login in'),
                   ),
                 ],
               )
